@@ -32,10 +32,10 @@ export default function AddBtn({ id }: { id: string }) {
           })
         }
       } else {
-        toast.error('Please signin first', { position: 'top-center' })
+        toast.error('Please signin first ..', { position: 'top-center' })
       }
     } catch (e) {
-      toast.error('Failed to add to cart', { position: 'top-center' })
+      toast.error('Failed to add to cart ..', { position: 'top-center' })
     } finally {
       setLoading(false)
     }
