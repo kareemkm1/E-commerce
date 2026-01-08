@@ -1,0 +1,511 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ========================================
+   LUXE E-COMMERCE DESIGN SYSTEM
+   Modern & Minimal with Neutral & Gold
+======================================== */
+
+:root {
+    --radius: 0.5rem;
+
+    /* Gold Palette */
+    --gold-50: #fdfaf5;
+    --gold-100: #f9f3e6;
+    --gold-200: #f0e4c9;
+    --gold-300: #e5d0a3;
+    --gold-400: #d4b574;
+    --gold-500: #c9a050;
+    --gold-600: #b8923f;
+    --gold-700: #967534;
+    --gold-800: #7a5f2e;
+    --gold-900: #644e28;
+
+    /* Theme */
+    --background: #fafafa;
+    --foreground: #171717;
+    --card: #ffffff;
+    --card-foreground: #171717;
+    --popover: #ffffff;
+    --popover-foreground: #171717;
+    --primary: #171717;
+    --primary-foreground: #fafafa;
+    --secondary: #f5f5f5;
+    --secondary-foreground: #171717;
+    --muted: #f5f5f5;
+    --muted-foreground: #737373;
+    --accent: #c9a050;
+    --accent-foreground: #171717;
+    --destructive: #ef4444;
+    --border: #e5e5e5;
+    --input: #e5e5e5;
+    --ring: #c9a050;
+}
+
+.dark {
+    --background: #0a0a0a;
+    --foreground: #fafafa;
+    --card: #171717;
+    --card-foreground: #fafafa;
+    --popover: #171717;
+    --popover-foreground: #fafafa;
+    --primary: #fafafa;
+    --primary-foreground: #171717;
+    --secondary: #262626;
+    --secondary-foreground: #fafafa;
+    --muted: #262626;
+    --muted-foreground: #a3a3a3;
+    --accent: #d4b574;
+    --accent-foreground: #171717;
+    --border: #262626;
+    --input: #262626;
+    --ring: #d4b574;
+}
+
+@theme inline {
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+@layer components {
+    .btn-primary {
+        @apply inline-flex items-center justify-center px-8 py-3.5
+               bg-neutral-900 text-white font-medium text-sm tracking-wide
+               transition-all duration-300 ease-out
+               hover:bg-neutral-800 hover:shadow-lg
+               active:scale-[0.98];
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center px-8 py-3.5
+               bg-white text-neutral-900 font-medium text-sm tracking-wide
+               border border-neutral-300
+               transition-all duration-300 ease-out
+               hover:border-neutral-900 hover:shadow-lg
+               active:scale-[0.98];
+    }
+
+    .btn-gold {
+        @apply inline-flex items-center justify-center px-8 py-3.5
+               bg-[#c9a050] text-white font-medium text-sm tracking-wide
+               transition-all duration-300 ease-out
+               hover:bg-[#b8923f] hover:shadow-lg
+               active:scale-[0.98];
+    }
+}
+
+/* ========================================
+   NAVIGATION
+======================================== */
+@layer components {
+    .nav-link {
+        @apply relative text-sm font-medium  px-1 py-2
+               hover:text-neutral-900;
+    }
+
+    .nav-link::after {
+        content: '';
+        @apply absolute left-0 bottom-0 w-0 h-0.5
+               bg-[#c9a050] transition-all duration-300 ease-out;
+    }
+
+    .nav-link:hover::after {
+        @apply w-full;
+    }
+}
+
+/* ========================================
+   PRODUCT CARDS
+======================================== */
+@layer components {
+    .product-card {
+        @apply bg-white cursor-pointer;
+    }
+
+    .product-card-image {
+        @apply relative overflow-hidden bg-neutral-100 aspect-square;
+    }
+
+    .product-card-image img {
+        @apply w-full h-full object-cover transition-transform duration-700 ease-out;
+    }
+
+    .product-card:hover .product-card-image img {
+        @apply scale-110;
+    }
+
+    .product-card-content {
+        @apply p-4 space-y-2;
+    }
+
+    .product-card-category {
+        @apply text-xs uppercase tracking-widest text-[#c9a050] font-medium;
+    }
+
+    .product-card-title {
+        @apply text-sm font-medium text-neutral-900 line-clamp-2 leading-snug;
+    }
+
+    .product-card-price {
+        @apply text-base font-semibold text-neutral-900;
+    }
+
+    .product-card-rating {
+        @apply flex items-center gap-1 text-sm text-neutral-500;
+    }
+
+    .product-card-btn {
+        @apply w-full py-3 bg-neutral-900 text-white text-sm font-medium
+               opacity-0 translate-y-2 transition-all duration-300
+               hover:bg-[#c9a050];
+    }
+
+    .product-card:hover .product-card-btn {
+        @apply opacity-100 translate-y-0;
+    }
+}
+
+/* ========================================
+   BRAND CARDS
+======================================== */
+@layer components {
+    .brand-card {
+        @apply bg-white border border-neutral-200 p-8
+               flex items-center justify-center
+               transition-all duration-300 ease-out
+               hover:shadow-xl hover:border-[#c9a050] hover:-translate-y-1;
+    }
+
+    .brand-card img {
+        @apply max-h-16 w-auto object-contain grayscale opacity-70
+               transition-all duration-300;
+    }
+
+    .brand-card:hover img {
+        @apply grayscale-0 opacity-100;
+    }
+}
+
+/* ========================================
+   CATEGORY CARDS
+======================================== */
+@layer components {
+    .category-card {
+        @apply relative overflow-hidden cursor-pointer;
+    }
+
+    .category-card-image {
+        @apply w-full h-48 object-cover transition-transform duration-500;
+    }
+
+    .category-card:hover .category-card-image {
+        @apply scale-110;
+    }
+
+    .category-card-overlay {
+        @apply absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent
+               flex items-end p-4;
+    }
+
+    .category-card-title {
+        @apply text-white font-medium text-lg;
+    }
+}
+
+/* ========================================
+   SECTION STYLES
+======================================== */
+@layer components {
+    .section {
+        @apply py-16 md:py-24;
+    }
+
+    .section-header {
+        @apply text-center mb-12 md:mb-16;
+    }
+
+    .section-title {
+        @apply text-3xl md:text-4xl font-light text-neutral-900 mb-4;
+    }
+
+    .section-subtitle {
+        @apply text-neutral-500 max-w-2xl mx-auto;
+    }
+
+    .section-divider {
+        @apply w-12 h-0.5 bg-[#c9a050] mx-auto mt-6;
+    }
+}
+
+/* ========================================
+   HERO SLIDER
+======================================== */
+.hero-slide {
+    @apply relative h-[70vh] md:h-[85vh];
+}
+
+.hero-slide img {
+    @apply w-full h-full object-cover;
+}
+
+.hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent;
+}
+
+.hero-content {
+    @apply absolute inset-0 flex items-center;
+}
+
+.hero-text {
+    @apply max-w-xl text-white space-y-6 px-8 md:px-16;
+}
+
+.hero-title {
+    @apply text-4xl md:text-6xl font-light leading-tight;
+}
+
+.hero-subtitle {
+    @apply text-lg text-white/80;
+}
+
+/* ========================================
+   CART STYLES
+======================================== */
+@layer components {
+    .cart-item {
+        @apply flex gap-6 py-6 border-b border-neutral-200;
+    }
+
+    .cart-item-image {
+        @apply w-24 h-24 md:w-32 md:h-32 bg-neutral-100 flex-shrink-0 overflow-hidden;
+    }
+
+    .cart-item-image img {
+        @apply w-full h-full object-cover;
+    }
+
+    .cart-summary {
+        @apply bg-neutral-50 p-8 border border-neutral-200 space-y-4;
+    }
+
+    .qty-selector {
+        @apply inline-flex items-center border border-neutral-300;
+    }
+
+    .qty-btn {
+        @apply w-9 h-9 flex items-center justify-center
+               text-neutral-600 transition-colors
+               hover:bg-neutral-100 hover:text-neutral-900
+               disabled:opacity-40 disabled:cursor-not-allowed;
+    }
+
+    .qty-input {
+        @apply w-12 h-9 text-center border-x border-neutral-300
+               bg-transparent text-neutral-900 font-medium text-sm;
+    }
+}
+
+/* ========================================
+   AUTH PAGES
+======================================== */
+.auth-container {
+    @apply min-h-screen flex items-center justify-center bg-neutral-50 py-12 px-4;
+}
+
+.auth-card {
+    @apply w-full max-w-md bg-white p-10 shadow-2xl border border-neutral-100;
+}
+
+.auth-header {
+    @apply text-center mb-10;
+}
+
+.auth-title {
+    @apply text-3xl font-light text-neutral-900 mb-2;
+}
+
+.auth-subtitle {
+    @apply text-neutral-500;
+}
+
+.auth-input {
+    @apply w-full px-4 py-3.5 bg-neutral-50 border border-neutral-200
+           text-neutral-900 placeholder:text-neutral-400 text-sm
+           transition-all duration-300
+           focus:bg-white focus:border-[#c9a050] focus:ring-1 focus:ring-[#c9a050] focus:outline-none;
+}
+
+/* ========================================
+   LOADING
+======================================== */
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #e5e5e5;
+    border-top-color: #c9a050;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* ========================================
+   BADGES
+======================================== */
+@layer components {
+    .badge {
+        @apply inline-flex items-center px-2.5 py-1 text-xs font-medium uppercase tracking-wider;
+    }
+
+    .badge-gold {
+        @apply bg-[#c9a050]/10 text-[#967534];
+    }
+}
+
+/* ========================================
+   RATING
+======================================== */
+.star {
+    @apply text-[#c9a050];
+}
+
+.star-empty {
+    @apply text-neutral-300;
+}
+
+/* ========================================
+   SCROLLBAR
+======================================== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a3a3a3;
+}
+
+/* ========================================
+   LEGACY COMPATIBILITY
+======================================== */
+.green-hover {
+    @apply relative text-sm font-medium text-neutral-600 px-1 py-2 transition-colors duration-300 hover:text-neutral-900;
+}
+
+.red-hover {
+    @apply text-red-600 hover:text-red-500 transition-colors cursor-pointer font-medium;
+}
+
+.neon-text {
+    @apply text-3xl md:text-4xl font-light text-neutral-900;
+}
+
+.masked-text {
+    @apply text-xl font-semibold tracking-tight;
+    background: linear-gradient(135deg, #c9a050 0%, #967534 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cardd {
+    transform: none;
+    box-shadow: none;
+}
+
+.cardd:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.card1 {
+    @apply relative overflow-hidden bg-white;
+}
+
+.card1::before,
+.card1::after {
+    display: none;
+}
+
+/* Empty State */
+.empty-state {
+    @apply text-center py-20 px-4;
+}
+
+.empty-state-title {
+    @apply text-2xl font-light text-neutral-900 mb-2;
+}
+
+.empty-state-text {
+    @apply text-neutral-500 mb-8;
+}
