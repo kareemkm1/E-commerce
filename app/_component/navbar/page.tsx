@@ -154,7 +154,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className={`
         md:hidden overflow-hidden transition-all duration-300 ease-in-out
-        ${openMenu ? 'max-h-96 border-t border-neutral-100' : 'max-h-0'}
+        ${openMenu ? 'max-h-96 border-t border-neutral-100 text-black' : 'max-h-0'}
       `}>
         <div className="px-4 py-6 bg-white space-y-1">
           <Link href="/" className="block py-3  font-medium border-b border-neutral-100">
