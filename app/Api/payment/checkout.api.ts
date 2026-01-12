@@ -25,7 +25,8 @@ export async function payProducts(formValue: Icheckout, cartId: string) {
 
 
     const baseUrl = process.env.NEXT_URL || 'http://localhost:3000'
-    let res = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${baseUrl}`,
+    const returnUrl = `${baseUrl.replace(/\/$/, '')}/allorders`
+    let res = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${encodeURIComponent(returnUrl)}`,
         {
             method: 'POST',
             headers: headers,
