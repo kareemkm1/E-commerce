@@ -33,7 +33,8 @@ export default function Checkout() {
 
   async function handlePayment(values: Icheckout) {
     setLoading(true)
-    const data = await payProducts(values, id);
+    const siteOrigin = typeof window !== 'undefined' ? window.location.origin : ''
+    const data = await payProducts(values, id, siteOrigin);
     if (data.status == 'success') {
       window.location.href = data.session.url;
     }
